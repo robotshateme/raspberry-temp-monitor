@@ -2,11 +2,14 @@
 from twilio.rest import Client
 
 # Your Account Sid and Auth Token from twilio.com/user/account
-account_sid = "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-auth_token = "your_auth_token"
+account_sid = "AC6dffa441aa4d6f12b6fb178cd69edb51"
+auth_token = "28f10c53564693007be6264495643ca0"
 client = Client(account_sid, auth_token)
 
-message = client.messages("MM800f449d0399ed014aae2bcc0cc2f2ec") \
-                .fetch()
+message = client.messages.create(
+                              body='Hello there!',
+                              from_='+15555555555',
+                              to='+12693120639'
+                          )
 
-print(message.body.encode('utf-8'))
+print(message.sid)
